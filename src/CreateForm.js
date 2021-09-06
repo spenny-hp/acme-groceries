@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { create } from './store'
 import axios from 'axios';
 
 
@@ -23,9 +24,8 @@ class CreateForm extends Component{
 
 const mapDispatchToProps = (dispatch)=> {
   return {
-    create: async(name)=> {
-      const grocery = (await axios.post('/api/groceries', { name })).data;
-      dispatch({ type: 'CREATE', grocery });
+    create: (name) => {
+      dispatch(create(name))
     }
   };
 }
